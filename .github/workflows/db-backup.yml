@@ -12,21 +12,26 @@ jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
+      
       - name: Install PostgreSQL 17 client
         run: |
+          sudo apt-get update
           sudo apt-get install -y curl ca-certificates gnupg
           sudo install -d /usr/share/postgresql-common/pgdg
           sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
           echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(. /etc/os-release && echo $VERSION_CODENAME)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
           sudo apt-get update
           sudo apt-get install -y postgresql-client-17
-
+          /usr/lib/postgresql/17/bin/pg_dump --version
+      
       - name: Dump the public schema
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: |
-          pg_dump "$DATABASE_URL" --schema=public --no-owner --no-privileges --format=custom \
-            --exclude-table-data=public.owner_accounts --exclude-table-data=public.login_attempts \
+          /usr/lib/postgresql/17/bin/pg_dump "$DATABASE_URL" \
+            --schema=public --no-owner --no-privileges --format=custom \
+            --exclude-table-data=public.owner_accounts \
+            --exclude-table-data=public.login_attempts \
             --file=backup.dump
 
       - name: Encrypt the dump
