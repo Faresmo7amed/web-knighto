@@ -1,0 +1,232 @@
+/* Sticky bar with the "Pages" button. It cancels the main area's padding so it spans edge to edge. */
+.bar {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 10;
+    margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-4)) var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+.trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--touch-min);
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.trigger:hover {
+    background: var(--surface-hover);
+}
+@media (min-width: 900px) {
+    .bar {
+        display: none;
+    }
+}
+
+/* Drawer */
+.root {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+}
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--text) 45%, transparent);
+    animation: fade var(--dur) var(--ease);
+}
+.panel {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: min(22rem, 88vw);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    border-inline-end: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    animation: slide var(--dur) var(--ease);
+    outline: none;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes slide {
+    from {
+        transform: translateX(-100%);
+    }
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: var(--nav-height);
+    padding: 0 var(--space-2) 0 var(--space-4);
+    border-bottom: 1px solid var(--border);
+}
+.headTitle {
+    font-weight: 700;
+}
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: var(--touch-min);
+    margin-inline-start: calc(-1 * var(--space-2));
+    padding: 0 var(--space-2);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.back:hover {
+    background: var(--accent-soft);
+}
+
+.levelTitle {
+    padding: var(--space-4) var(--space-4) var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+.list {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--space-2) var(--space-6);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.row {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+}
+.rowLink {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: var(--touch-min);
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+}
+.rowLink:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+    text-decoration: none;
+}
+.rowLink[data-state='expanded'] {
+    background: var(--bg-subtle);
+    color: var(--text);
+    font-weight: 600;
+}
+.rowLink[aria-current='page'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+}
+.label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+.label svg {
+    flex: 0 0 auto;
+}
+.text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.badge {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 0 7px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.6875rem;
+    font-weight: 700;
+}
+.drill {
+    flex: 0 0 var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.drill:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.levelTitle:focus {
+    outline: none;
+}
+
+/* The list slides in from the side you are moving toward */
+.list[data-direction='forward'] {
+    animation: fromEnd var(--dur) var(--ease);
+}
+.list[data-direction='back'] {
+    animation: fromStart var(--dur) var(--ease);
+}
+@keyframes fromEnd {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+}
+@keyframes fromStart {
+    from {
+        opacity: 0;
+        transform: translateX(-16px);
+    }
+}
+
+/* Mirror the motion in RTL (full RTL pass is Step 11) */
+:global([dir='rtl']) .panel {
+    animation-name: slideRtl;
+}
+@keyframes slideRtl {
+    from {
+        transform: translateX(100%);
+    }
+}
+:global([dir='rtl']) .list[data-direction='forward'] {
+    animation-name: fromStart;
+}
+:global([dir='rtl']) .list[data-direction='back'] {
+    animation-name: fromEnd;
+}

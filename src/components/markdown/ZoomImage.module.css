@@ -1,0 +1,58 @@
+.figure {
+    margin: 0 0 1.5rem;
+}
+.imgBtn {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-subtle);
+    overflow: hidden;
+    cursor: zoom-in;
+}
+.img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.caption {
+    margin-top: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-4);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    outline: none;
+    animation: fade var(--dur) var(--ease);
+}
+.big {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    background: var(--surface);
+}
+.close {
+    position: absolute;
+    top: var(--space-3);
+    inset-inline-end: var(--space-3);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}

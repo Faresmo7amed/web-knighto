@@ -1,0 +1,7 @@
+.mark {
+    padding: 0 1px;
+    border-radius: 3px;
+    background: var(--selection);
+    color: inherit;
+    font-weight: 600;
+}

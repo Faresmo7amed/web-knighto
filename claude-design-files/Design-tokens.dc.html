@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Design tokens</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.lt .k{color:#6F42C1}.lt .f{color:#1B63B8}.lt .s{color:#3C7D14}.lt .p{color:#4A5160}.lt .a{color:#B45F06}.lt .t{color:#C2303D}.lt .c{color:#5F6877;font-style:italic}.lt .n{color:#9A6700}
+.dk .k{color:#B79AF5}.dk .f{color:#70B8FF}.dk .s{color:#9BE963}.dk .p{color:#D3D7DE}.dk .a{color:#FBAD60}.dk .t{color:#F47B85}.dk .c{color:#858D9A;font-style:italic}.dk .n{color:#F2C46D}
+.code{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:14px;line-height:22px;white-space:pre;margin:0}
+</style>
+</helmet>
+<div style="width:100%;max-width:1440px;margin:0 auto;box-sizing:border-box;padding:72px 80px 96px;background:#F8F9FB;color:#1A1D23;font-family:'DM Sans',system-ui,sans-serif;display:flex;flex-direction:column;gap:72px">
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#2F6FCB">01 · Foundations</div>
+<h1 style="margin:0;font-size:56px;line-height:60px;letter-spacing:-0.02em;font-weight:600">Design tokens</h1>
+<p style="margin:0;max-width:720px;font-size:18px;line-height:30px;color:#565E6D">Type, color, syntax, spacing, radii and shadows for light and dark. Every value below is a token, so the whole site restyles from one place.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:28px">
+<h2 style="margin:0;font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Typography</h2>
+<div style="display:flex;flex-wrap:wrap;gap:24px">
+<div style="flex:1 1 280px;border:1px solid #E1E5EC;background:#FCFCFD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;color:#646C7B;letter-spacing:0.04em;text-transform:uppercase;font-weight:600">Interface · Sans</div>
+<div style="font-size:40px;line-height:48px;font-weight:600">Aa Bb Cc</div>
+<div style="font-size:15px;line-height:22px;color:#565E6D">Nav, sidebars, buttons, headings, labels, dashboard. Display face here: DM Sans, standing in for Anthropic Sans.</div>
+</div>
+<div style="flex:1 1 280px;border:1px solid #E1E5EC;background:#FCFCFD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;color:#646C7B;letter-spacing:0.04em;text-transform:uppercase;font-weight:600">Reading · Serif</div>
+<div style="font-family:'Source Serif 4',Georgia,serif;font-size:40px;line-height:48px">Aa Bb Cc</div>
+<div style="font-family:'Source Serif 4',Georgia,serif;font-size:16px;line-height:26px;color:#565E6D">Article body, quotes, roadmap study content. Source Serif 4 here, standing in for Anthropic Serif.</div>
+</div>
+<div style="flex:1 1 280px;border:1px solid #E1E5EC;background:#FCFCFD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;color:#646C7B;letter-spacing:0.04em;text-transform:uppercase;font-weight:600">Code · Mono</div>
+<div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:36px;line-height:48px">Aa Bb 01</div>
+<div style="font-size:15px;line-height:22px;color:#565E6D">Code blocks, inline code, commands, file trees. JetBrains Mono here, standing in for Anthropic Mono Web.</div>
+</div>
+</div>
+
+<div style="border:1px solid #E1E5EC;background:#FCFCFD;border-radius:12px;padding:8px 32px;display:flex;flex-direction:column">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">Display · 56 / 60 · −0.02em · 600</div><div style="font-size:56px;line-height:60px;letter-spacing:-0.02em;font-weight:600">Learn it in order</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">H1 · 40 / 48 · −0.015em · 600</div><div style="font-size:40px;line-height:48px;letter-spacing:-0.015em;font-weight:600">Introduction to JavaScript</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">H2 · 30 / 38 · −0.01em · 600</div><div style="font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Destructuring objects</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">H3 · 24 / 32 · −0.005em · 600</div><div style="font-size:24px;line-height:32px;letter-spacing:-0.005em;font-weight:600">Default values</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">H4 · 20 / 28 · 0 · 600</div><div style="font-size:20px;line-height:28px;font-weight:600">Nested patterns</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">Body serif · 18 / 30.6 (1.7)</div><div style="max-width:640px;font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:30.6px">A closure keeps access to the variables of the scope it was created in, even after that scope has finished running.</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">Small · 15 / 22 · 400</div><div style="font-size:15px;line-height:22px">Sidebar item, table cell, form helper text</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid #E1E5EC"><div style="width:180px;font-size:13px;color:#646C7B">Caption · 13 / 18 · 0.01em · 500</div><div style="font-size:13px;line-height:18px;letter-spacing:0.01em;font-weight:500">Updated Oct 2026 · 6 min read</div></div>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:24px;padding:20px 0"><div style="width:180px;font-size:13px;color:#646C7B">Code · 14 / 22 · mono 400</div><div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;line-height:22px">const { name } = user;</div></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:28px">
+<h2 style="margin:0;font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Color palette</h2>
+<p style="margin:0;max-width:720px;font-size:16px;line-height:26px;color:#565E6D">Anthropic's structure (warm-neutral grounds, high-contrast text, one saturated accent), with the orange accent moved to blue and the neutrals tinted cool. No pure white or black. Text pairs pass WCAG AA.</p>
+<div style="display:flex;flex-wrap:wrap;gap:32px">
+
+<div style="flex:1 1 560px;min-width:0;background:#F8F9FB;border:1px solid #E1E5EC;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px">
+<div style="font-size:20px;line-height:28px;font-weight:600">Light</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+<sc-for list="{{lightTokens}}" as="c" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:8px;border:1px solid #C9D0DB;background:{{c.hex}}"></div><div><div style="font-size:14px;line-height:18px;font-weight:600">{{c.name}}</div><div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:18px;color:#565E6D">{{c.hex}}</div></div></div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:18px;color:#565E6D">
+<div>text on bg · 15.6:1 &nbsp; text-muted on bg · 6.0:1 &nbsp; text-faint on bg · 4.9:1</div>
+<div>accent on bg · 4.6:1 &nbsp; accent-contrast on accent · 4.9:1</div>
+</div>
+</div>
+
+<div style="flex:1 1 560px;min-width:0;background:#15171B;border:1px solid #2E333B;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px;color:#E8EAEE">
+<div style="font-size:20px;line-height:28px;font-weight:600">Dark</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+<sc-for list="{{darkTokens}}" as="c" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:8px;border:1px solid #404650;background:{{c.hex}}"></div><div><div style="font-size:14px;line-height:18px;font-weight:600">{{c.name}}</div><div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:18px;color:#A4ACB8">{{c.hex}}</div></div></div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:18px;color:#A4ACB8">
+<div>text on bg · 14.6:1 &nbsp; text-muted on bg · 7.6:1 &nbsp; text-faint on bg · 5.1:1</div>
+<div>accent on bg · 7.2:1 &nbsp; accent-contrast on accent · 7.9:1</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:28px">
+<h2 style="margin:0;font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Syntax highlighting</h2>
+<p style="margin:0;max-width:760px;font-size:16px;line-height:26px;color:#565E6D">The eight owner colors are fixed in dark mode. Light counterparts keep the same hue but are darkened to pass AA on the light code surface. Keywords, numbers, comments and decorators are proposed.</p>
+<div style="display:flex;flex-wrap:wrap;gap:32px">
+
+<div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div class="lt" style="background:#F0F2F6;border:1px solid #DDE2EA;border-radius:12px;overflow-x:auto">
+<div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #DDE2EA;font-size:13px;color:#565E6D"><span>Counter.jsx</span><span>jsx</span></div>
+<pre class="code" style="padding:16px"><span class="k">import</span> <span class="p">{</span> <span class="f">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="s">"react"</span><span class="p">;</span>
+
+<span class="c">// Count clicks</span>
+<span class="k">export default function</span> <span class="f">Counter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">[</span>count<span class="p">,</span> setCount<span class="p">]</span> <span class="p">=</span> <span class="f">useState</span><span class="p">(</span><span class="n">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="t">button</span> <span class="a">onClick</span><span class="p">=</span><span class="p">{</span>() <span class="p">=&gt;</span> <span class="f">setCount</span><span class="p">(</span>count <span class="p">+</span> <span class="n">1</span><span class="p">)</span><span class="p">}</span><span class="p">&gt;</span>
+      <span class="p">{`</span>Clicked <span class="p">${</span>count<span class="p">}</span><span class="p">`}</span>
+    <span class="p">&lt;/</span><span class="t">button</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span></pre>
+</div>
+<div style="font-size:13px;color:#565E6D">Light</div>
+</div>
+
+<div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div class="dk" style="background:#1A1D22;border:1px solid #2B3037;border-radius:12px;overflow-x:auto;color:#D3D7DE">
+<div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #2B3037;font-size:13px;color:#A4ACB8"><span>Counter.jsx</span><span>jsx</span></div>
+<pre class="code" style="padding:16px"><span class="k">import</span> <span class="p">{</span> <span class="f">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="s">"react"</span><span class="p">;</span>
+
+<span class="c">// Count clicks</span>
+<span class="k">export default function</span> <span class="f">Counter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">[</span>count<span class="p">,</span> setCount<span class="p">]</span> <span class="p">=</span> <span class="f">useState</span><span class="p">(</span><span class="n">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="t">button</span> <span class="a">onClick</span><span class="p">=</span><span class="p">{</span>() <span class="p">=&gt;</span> <span class="f">setCount</span><span class="p">(</span>count <span class="p">+</span> <span class="n">1</span><span class="p">)</span><span class="p">}</span><span class="p">&gt;</span>
+      <span class="p">{`</span>Clicked <span class="p">${</span>count<span class="p">}</span><span class="p">`}</span>
+    <span class="p">&lt;/</span><span class="t">button</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span></pre>
+</div>
+<div style="font-size:13px;color:#565E6D">Dark</div>
+</div>
+
+</div>
+
+<div style="border:1px solid #E1E5EC;background:#FCFCFD;border-radius:12px;overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14px;line-height:20px;min-width:720px">
+<thead><tr style="text-align:left;background:#F0F2F6"><th style="padding:12px 16px;font-weight:600">Token</th><th style="padding:12px 16px;font-weight:600">Dark</th><th style="padding:12px 16px;font-weight:600">Light</th><th style="padding:12px 16px;font-weight:600">Origin</th></tr></thead>
+<tbody>
+<sc-for list="{{syntaxRows}}" as="r" hint-placeholder-count="8">
+<tr style="border-top:1px solid #E1E5EC"><td style="padding:10px 16px">{{r.name}}</td><td style="padding:10px 16px"><span style="display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:8px;border:1px solid #C9D0DB;background:{{r.dark}}"></span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px">{{r.dark}}</span></td><td style="padding:10px 16px"><span style="display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:8px;border:1px solid #C9D0DB;background:{{r.light}}"></span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px">{{r.light}}</span></td><td style="padding:10px 16px;color:#565E6D">{{r.origin}}</td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:48px">
+<div style="flex:1 1 360px;display:flex;flex-direction:column;gap:20px">
+<h2 style="margin:0;font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Spacing and radii</h2>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{spacing}}" as="s" hint-placeholder-count="8">
+<div style="display:flex;align-items:center;gap:16px"><div style="width:72px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#565E6D">{{s.name}}</div><div style="height:12px;border-radius:3px;background:#2F6FCB;width:{{s.px}}px"></div><div style="font-size:13px;color:#565E6D">{{s.px}} px</div></div>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="width:72px;height:72px;border:1.5px solid #2F6FCB;background:#E3EDFB;border-radius:4px"></div><div style="font-size:13px;color:#565E6D">sm · 4</div></div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="width:72px;height:72px;border:1.5px solid #2F6FCB;background:#E3EDFB;border-radius:8px"></div><div style="font-size:13px;color:#565E6D">md · 8</div></div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="width:72px;height:72px;border:1.5px solid #2F6FCB;background:#E3EDFB;border-radius:12px"></div><div style="font-size:13px;color:#565E6D">lg · 12</div></div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="width:72px;height:72px;border:1.5px solid #2F6FCB;background:#E3EDFB;border-radius:16px"></div><div style="font-size:13px;color:#565E6D">xl · 16</div></div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="width:72px;height:72px;border:1.5px solid #2F6FCB;background:#E3EDFB;border-radius:999px"></div><div style="font-size:13px;color:#565E6D">full</div></div>
+</div>
+</div>
+
+<div style="flex:1 1 360px;display:flex;flex-direction:column;gap:20px">
+<h2 style="margin:0;font-size:30px;line-height:38px;letter-spacing:-0.01em;font-weight:600">Shadows</h2>
+<div style="display:flex;flex-wrap:wrap;gap:24px">
+<div style="width:140px;height:96px;border-radius:12px;background:#FCFCFD;box-shadow:0 1px 2px rgba(26,29,35,0.06),0 1px 1px rgba(26,29,35,0.04);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font-size:13px;color:#565E6D">shadow-sm</div>
+<div style="width:140px;height:96px;border-radius:12px;background:#FCFCFD;box-shadow:0 4px 12px rgba(26,29,35,0.08),0 1px 3px rgba(26,29,35,0.05);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font-size:13px;color:#565E6D">shadow-md</div>
+<div style="width:140px;height:96px;border-radius:12px;background:#FCFCFD;box-shadow:0 16px 40px rgba(26,29,35,0.14),0 4px 12px rgba(26,29,35,0.06);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font-size:13px;color:#565E6D">shadow-lg</div>
+</div>
+<div style="font-size:14px;line-height:22px;color:#565E6D;max-width:420px">In dark mode shadows drop to a hairline border plus a deeper, lower-opacity shadow, because shadows barely read on dark surfaces. Focus ring: 2 px accent, 2 px offset, in both themes.</div>
+<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+<button style="min-height:44px;padding:0 20px;border:0;border-radius:8px;background:#2F6FCB;color:#FFFFFF;font:600 15px 'DM Sans',sans-serif;outline:2px solid #2F6FCB;outline-offset:2px">Focused button</button>
+<a href="#" style="color:#2F6FCB;font-size:15px">Accent link</a>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const lightTokens = [
+      { name: 'bg', hex: '#F8F9FB' }, { name: 'bg-subtle', hex: '#F0F2F6' }, { name: 'surface', hex: '#FCFCFD' },
+      { name: 'surface-hover', hex: '#F3F5F9' }, { name: 'border', hex: '#E1E5EC' }, { name: 'border-strong', hex: '#C9D0DB' },
+      { name: 'text', hex: '#1A1D23' }, { name: 'text-muted', hex: '#565E6D' }, { name: 'text-faint', hex: '#646C7B' },
+      { name: 'accent', hex: '#2F6FCB' }, { name: 'accent-hover', hex: '#255DAF' }, { name: 'accent-soft', hex: '#E3EDFB' },
+      { name: 'accent-contrast', hex: '#FFFFFF' }, { name: 'success', hex: '#2E7D4F' }, { name: 'warning', hex: '#9A6700' },
+      { name: 'danger', hex: '#C03A3A' }, { name: 'info', hex: '#1F7A99' }, { name: 'selection', hex: '#CFE0F8' },
+      { name: 'code-bg', hex: '#F0F2F6' }, { name: 'code-border', hex: '#DDE2EA' }
+    ];
+    const darkTokens = [
+      { name: 'bg', hex: '#15171B' }, { name: 'bg-subtle', hex: '#1B1E23' }, { name: 'surface', hex: '#1F2227' },
+      { name: 'surface-hover', hex: '#272B31' }, { name: 'border', hex: '#2E333B' }, { name: 'border-strong', hex: '#404650' },
+      { name: 'text', hex: '#E8EAEE' }, { name: 'text-muted', hex: '#A4ACB8' }, { name: 'text-faint', hex: '#858D9A' },
+      { name: 'accent', hex: '#6BA6F2' }, { name: 'accent-hover', hex: '#8DBBF6' }, { name: 'accent-soft', hex: '#1E2E47' },
+      { name: 'accent-contrast', hex: '#0F1B2E' }, { name: 'success', hex: '#5CC48A' }, { name: 'warning', hex: '#E0B04A' },
+      { name: 'danger', hex: '#F07A7A' }, { name: 'info', hex: '#5CB8D6' }, { name: 'selection', hex: '#2C4A78' },
+      { name: 'code-bg', hex: '#1A1D22' }, { name: 'code-border', hex: '#2B3037' }
+    ];
+    const syntaxRows = [
+      { name: 'Strings, import paths', dark: '#9BE963', light: '#3C7D14', origin: 'Given' },
+      { name: 'Types, classes, functions', dark: '#70B8FF', light: '#1B63B8', origin: 'Given' },
+      { name: 'Punctuation, keys, variables, ${}, fragments', dark: '#D3D7DE', light: '#4A5160', origin: 'Given' },
+      { name: 'JSX / TSX props', dark: '#FBAD60', light: '#B45F06', origin: 'Given' },
+      { name: 'HTML element names', dark: '#F47B85', light: '#C2303D', origin: 'Given' },
+      { name: 'HTML attribute names', dark: '#F07580', light: '#BC2F3C', origin: 'Given' },
+      { name: 'Keywords', dark: '#B79AF5', light: '#6F42C1', origin: 'Proposed' },
+      { name: 'Numbers, booleans, null', dark: '#F2C46D', light: '#9A6700', origin: 'Proposed' },
+      { name: 'Comments', dark: '#858D9A', light: '#5F6877', origin: 'Proposed' },
+      { name: 'Decorators, preprocessor, macros', dark: '#C3A0F0', light: '#7C4DBA', origin: 'Proposed' },
+      { name: 'Regex, escapes, shell env variables', dark: '#5FD1D6', light: '#0B7285', origin: 'Proposed' },
+      { name: 'Shell flags', dark: '#FBAD60', light: '#B45F06', origin: 'Proposed' }
+    ];
+    const spacing = [
+      { name: 'space-1', px: 4 }, { name: 'space-2', px: 8 }, { name: 'space-3', px: 12 }, { name: 'space-4', px: 16 },
+      { name: 'space-6', px: 24 }, { name: 'space-8', px: 32 }, { name: 'space-12', px: 48 }, { name: 'space-16', px: 64 }
+    ];
+    return { lightTokens, darkTokens, syntaxRows, spacing };
+  }
+}
+</script>
+</body>
+</html>

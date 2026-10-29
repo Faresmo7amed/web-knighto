@@ -1,0 +1,203 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.inner {
+    max-width: var(--page-max);
+    margin-inline: auto;
+    min-height: var(--nav-height);
+    padding-inline: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.inner img {
+    display: block;
+    width: 40px;
+}
+
+.logo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-inline-end: var(--space-4);
+    white-space: nowrap;
+}
+.logo:hover {
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: var(--touch-min);
+    padding: 0 var(--space-3);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: var(--text-ui);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.link:hover {
+    background: var(--bg-subtle);
+    color: var(--text);
+    text-decoration: none;
+}
+.link[aria-current='page'] {
+    background: var(--bg-subtle);
+    color: var(--text);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.search {
+    min-width: 240px;
+    min-height: var(--touch-min);
+    padding: 0 var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-subtle);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: var(--text-ui);
+    font-weight: 500;
+    cursor: pointer;
+}
+.search:hover {
+    color: var(--text);
+}
+.searchLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 1px 6px;
+    border: 1px solid var(--border-strong);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text-muted);
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+}
+
+/* More menu */
+.menuWrap {
+    position: relative;
+}
+.popover {
+    position: absolute;
+    top: calc(100% + 6px);
+    inset-inline-start: 0;
+    min-width: 200px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    animation: pop var(--dur) var(--ease);
+}
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+.menuItem {
+    display: flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding: 0 10px;
+    border-radius: var(--radius-md);
+    color: var(--text);
+    font-size: var(--text-ui);
+}
+.menuItem:hover {
+    background: var(--surface-hover);
+    text-decoration: none;
+}
+.menuItem[aria-current='page'] {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Mobile */
+.mobileOnly {
+    display: none;
+}
+.mobilePanel {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    max-height: calc(100dvh - var(--nav-height));
+    overflow-y: auto;
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+}
+.mobileLinks {
+    display: flex;
+    flex-direction: column;
+}
+.mobileSocials {
+    display: flex;
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 899px) {
+    .links,
+    .search,
+    .socials {
+        display: none;
+    }
+    .mobileOnly {
+        display: flex;
+    }
+}
+@media (min-width: 900px) {
+    .mobilePanel {
+        display: none;
+    }
+}

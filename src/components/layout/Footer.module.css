@@ -1,0 +1,12 @@
+.footer { display: flex; justify-content: center; padding: 2rem 2.5rem; border-top: 1px solid var(--border); background: var(--bg-subtle); }
+.inner { width: 100%; max-width: 70rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; color: var(--text-muted); }
+.links { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+.link { display: flex; align-items: center; min-height: 44px; padding: 0 0.75rem; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; color: var(--text-muted); text-decoration: none; }
+.link:hover { background: var(--surface-hover); color: var(--text); }
+.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.icons { display: flex; align-items: center; }
+
+@media (max-width: 900px) {
+    .footer { padding: 1.5rem 1rem; }
+    .inner { justify-content: center; text-align: center; }
+}

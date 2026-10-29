@@ -1,0 +1,124 @@
+.wrap {
+    max-width: 48rem;
+    margin-inline: auto;
+}
+.title {
+    margin: 0 0 var(--space-6);
+    font-size: var(--text-h1);
+    line-height: var(--lh-h1);
+    letter-spacing: var(--ls-h1);
+    font-weight: var(--fw-h1);
+}
+.form {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+}
+.input {
+    flex: 1;
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+}
+.input:focus-visible {
+    border-color: var(--accent);
+}
+.submit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    padding: 0 var(--space-4);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.submit:hover {
+    background: var(--accent-hover);
+}
+.note {
+    margin: 0 0 var(--space-6);
+    color: var(--text-muted);
+}
+.empty {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-8) var(--space-6);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--text-muted);
+}
+.empty b {
+    color: var(--text);
+    font-size: 1.125rem;
+}
+.group {
+    margin-bottom: var(--space-8);
+}
+.groupTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+.groupTitle span {
+    padding: 0 7px;
+    border-radius: var(--radius-full);
+    background: var(--bg-subtle);
+}
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: var(--touch-min);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    color: var(--text);
+}
+.card:hover {
+    border-color: var(--accent);
+    background: var(--surface-hover);
+    text-decoration: none;
+}
+.cardTitle {
+    font-weight: 600;
+    unicode-bidi: plaintext;
+}
+.snippet {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--text-muted);
+    unicode-bidi: plaintext;
+}
+.path {
+    font-size: var(--text-caption);
+    color: var(--text-faint);
+}

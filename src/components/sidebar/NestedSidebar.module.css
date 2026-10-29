@@ -1,0 +1,329 @@
+/* Sticks under the nav bar; every column scrolls on its own */
+.sidebar {
+    position: sticky;
+    top: var(--nav-height);
+    align-self: flex-start;
+    height: calc(100dvh - var(--nav-height));
+    display: flex;
+}
+
+/* Thin rail (replaces column 1 when it does not fit) */
+.rail {
+    display: none;
+    flex: 0 0 var(--rail-width);
+    width: var(--rail-width);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-2);
+    overflow-y: auto;
+    border-inline-end: 1px solid var(--border);
+    background: var(--bg);
+}
+.railLink {
+    flex: 0 0 auto;
+    width: var(--touch-min);
+    height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.railLink:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+    text-decoration: none;
+}
+.railLink[data-active='true'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+.railLink:focus-visible {
+    outline-offset: -2px;
+}
+
+/* One column */
+.col {
+    display: block;
+    flex: 0 0 var(--sidebar-col);
+    width: var(--sidebar-col);
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-4) var(--space-2);
+    border-inline-end: 1px solid var(--border);
+    background: var(--bg);
+    animation: colIn var(--dur) var(--ease);
+}
+@keyframes colIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: 2rem;
+    padding: 0 var(--space-1) 0 10px;
+    margin-bottom: 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+/* Open/close button of a column */
+.colBtn {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-faint);
+    cursor: pointer;
+}
+.colBtn:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+@media (pointer: coarse) {
+    .colBtn {
+        width: var(--touch-min);
+        height: var(--touch-min);
+    }
+}
+
+/* A closed column: thin strip */
+.strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 0 0 2.75rem;
+    width: 2.75rem;
+    height: 100%;
+    padding: var(--space-3) 0;
+    border-inline-end: 1px solid var(--border);
+    background: var(--bg);
+    animation: colIn var(--dur) var(--ease);
+}
+.stripTitle {
+    writing-mode: vertical-rl;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: 2.5rem;
+    padding: 0 10px;
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: var(--text-ui);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.item:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+    text-decoration: none;
+}
+/* Parent of the current page */
+.item[data-state='expanded'] {
+    background: var(--bg-subtle);
+    color: var(--text);
+    font-weight: 600;
+}
+/* The current page */
+.item[aria-current='page'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+}
+.item:focus-visible {
+    outline-offset: -2px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+.label svg {
+    flex: 0 0 auto;
+}
+.text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.trailing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 0 0 auto;
+}
+.chevron {
+    display: flex;
+}
+:global([dir='rtl']) .chevron {
+    transform: scaleX(-1);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 0 7px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.6875rem;
+    font-weight: 700;
+}
+
+/*
+Which columns fit? Each column knows how far it is from the newest one (data-from-end).
+Older columns hide as the screen gets narrower, and the rail takes over for column 1.
+
+ width        full columns   rail when open columns is...
+ >= 1800      4              never
+ 1280-1799    3              4
+ 1100-1279    2              3 or 4
+ 900-1099     1              2, 3 or 4
+*/
+.col:not([data-from-end='0']),
+.strip:not([data-from-end='0']) {
+    display: none;
+}
+@media (min-width: 1100px) {
+    .col[data-from-end='1'] {
+        display: block;
+    }
+    .strip[data-from-end='1'] {
+        display: flex;
+    }
+}
+@media (min-width: 1280px) {
+    .col[data-from-end='2'] {
+        display: block;
+    }
+    .strip[data-from-end='2'] {
+        display: flex;
+    }
+}
+@media (min-width: 1800px) {
+    .col[data-from-end='3'] {
+        display: block;
+    }
+    .strip[data-from-end='3'] {
+        display: flex;
+    }
+}
+
+@media (max-width: 1099px) {
+    .sidebar[data-count='2'] .rail {
+        display: flex;
+    }
+}
+@media (max-width: 1279px) {
+    .sidebar[data-count='3'] .rail {
+        display: flex;
+    }
+}
+@media (max-width: 1799px) {
+    .sidebar[data-count='4'] .rail {
+        display: flex;
+    }
+}
+
+/* Touch screens get 44px rows */
+@media (pointer: coarse) {
+    .item {
+        min-height: var(--touch-min);
+    }
+}
+
+/* Wrapper around the columns */
+.columns {
+    display: flex;
+    height: 100%;
+}
+
+.headingActions {
+    display: flex;
+    align-items: center;
+}
+.colBtn[aria-pressed='true'] {
+    color: var(--accent);
+}
+
+/* Expand button at the top of the rail (only used when unpinned) */
+.railPin {
+    display: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    margin-bottom: var(--space-2);
+}
+
+/* Unpinned: always show the rail, and float the columns over the content on hover or keyboard focus */
+.sidebar[data-pinned='false'] .rail {
+    display: flex;
+}
+.sidebar[data-pinned='false'] .railPin {
+    display: flex;
+}
+.sidebar[data-pinned='false'] .columns {
+    display: none;
+    position: absolute;
+    top: 0;
+    inset-inline-start: var(--rail-width);
+    z-index: 20;
+    background: var(--bg);
+    box-shadow: var(--shadow-lg);
+    border-inline-end: 1px solid var(--border);
+}
+.sidebar[data-pinned='false']:hover .columns,
+.sidebar[data-pinned='false']:focus-within .columns {
+    display: flex;
+    animation: reveal var(--dur) var(--ease);
+}
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+}
+
+.sidebar[data-pinned='false'][data-dismissed='true'] .columns {
+    display: none;
+}

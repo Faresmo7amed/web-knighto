@@ -1,0 +1,32 @@
+/* Syntax colors. Dark = owner colors (given) + proposed. Light = same hues, darkened for AA. */
+
+:root,
+[data-theme='light'] {
+    --syn-keyword: #6f42c1;     /* proposed */
+    --syn-function: #1b63b8;    /* given: functions, classes, types */
+    --syn-string: #3c7d14;      /* given: strings, import paths */
+    --syn-punct: #4a5160;       /* given: punctuation, keys, variables, ${}, fragments */
+    --syn-prop: #b45f06;        /* given: JSX/TSX props. Also shell flags */
+    --syn-tag: #c2303d;         /* given: HTML element names */
+    --syn-attr: #bc2f3c;        /* given: HTML attribute names */
+    --syn-comment: #5f6877;     /* proposed */
+    --syn-number: #9a6700;      /* proposed: numbers, booleans, null */
+    --syn-decorator: #7c4dba;   /* proposed: decorators, preprocessor, macros */
+    --syn-regex: #0b7285;       /* proposed: regex, escapes, shell env variables */
+    --syn-diff-add-bg: color-mix(in srgb, var(--success) 16%, transparent);
+    --syn-diff-del-bg: color-mix(in srgb, var(--danger) 16%, transparent);
+}
+
+[data-theme='dark'] {
+    --syn-keyword: #b79af5;
+    --syn-function: #70b8ff;
+    --syn-string: #9be963;
+    --syn-punct: #d3d7de;
+    --syn-prop: #fbad60;
+    --syn-tag: #f47b85;
+    --syn-attr: #f07580;
+    --syn-comment: #858d9a;
+    --syn-number: #f2c46d;
+    --syn-decorator: #c3a0f0;
+    --syn-regex: #5fd1d6;
+}

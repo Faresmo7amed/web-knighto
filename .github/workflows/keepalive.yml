@@ -1,0 +1,19 @@
+name: Keep Supabase active
+
+on:
+  schedule:
+    - cron: '17 5 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the protected keep-alive route
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          KEEPALIVE_SECRET: ${{ secrets.KEEPALIVE_SECRET }}
+        run: |
+          curl --fail --silent --show-error \
+            --header "x-keepalive-secret: $KEEPALIVE_SECRET" \
+            "$SITE_URL/api/keepalive"

@@ -1,0 +1,145 @@
+/* The aside sits at the very edge of the page, so cancel the main area's side padding and give it back to the article */
+.wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-inline: calc(-1 * var(--main-pad-x, 0px));
+}
+.article {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: var(--main-pad-x, 0px);
+}
+.inner {
+    max-width: var(--content-max);
+    margin-inline: auto;
+}
+
+/* Reading progress bar under the nav */
+.bar {
+    position: fixed;
+    top: var(--nav-height);
+    inset-inline: 0;
+    z-index: 49;
+    height: 3px;
+}
+.barFill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 0 3px 3px 0;
+    transition: width var(--dur-fast) linear;
+}
+
+/* Floating buttons */
+.scrollBtn {
+    position: fixed;
+    inset-inline-end: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 40;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+}
+.scrollBtn:hover {
+    background: var(--surface-hover);
+}
+.fab {
+    position: fixed;
+    inset-inline-start: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 40;
+    min-height: var(--touch-min);
+    padding: 0 var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow-md);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.fab:hover {
+    background: var(--surface-hover);
+}
+@media (min-width: 1100px) {
+    .fab {
+        display: none;
+    }
+}
+
+/* Bottom sheet */
+.sheetRoot {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+}
+.sheetBackdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--text) 45%, transparent);
+    animation: fade var(--dur) var(--ease);
+}
+.sheet {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    max-height: 75dvh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4) var(--space-6);
+    background: var(--bg);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-lg);
+    animation: rise var(--dur) var(--ease);
+    outline: none;
+}
+.handle {
+    align-self: center;
+    width: 2.5rem;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border-strong);
+}
+.sheetHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sheetTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.sheetToc {
+    min-height: 0;
+    overflow-y: auto;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes rise {
+    from {
+        transform: translateY(100%);
+    }
+}
+
+@media print {
+    .bar,
+    .scrollBtn,
+    .fab {
+        display: none;
+    }
+}
